@@ -1,0 +1,18 @@
+app-header{
+    height: 80px;
+    display: block;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 80px);
+}
+
+app-crud{
+    flex: 0 0 30%;
+}
+
+app-products{
+    flex: 1;
+}
