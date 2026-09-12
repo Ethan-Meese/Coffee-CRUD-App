@@ -1,7 +1,6 @@
-
 <app-header></app-header>
 
 <div class="container">
-    <app-crud></app-crud>
-    <app-products></app-products>
+  <app-crud (coffeeLoaded)="updateCoffeeList($event)"></app-crud>
+  <app-products [coffees]="coffees"></app-products>
 </div>

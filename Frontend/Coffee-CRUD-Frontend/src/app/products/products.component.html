@@ -1,3 +1,9 @@
-<p class="products">
-  This will list the eventual products! The products will also show differnet select options if it is going to be updated or deleted.
-</p>
+<div class="products">
+  <p>Here is a list of our coffees!</p>
+  @for (coffeeItem of coffees; track coffeeItem.id) {
+    <p>
+      {{ coffeeItem.id }} - {{ coffeeItem.name }} -
+      {{ coffeeItem.price }}
+    </p>
+  }
+</div>
