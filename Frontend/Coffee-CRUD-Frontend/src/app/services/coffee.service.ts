@@ -6,13 +6,15 @@ export interface Coffee {
   id: number;
   name: string;
   texture: string;
-  description: string | null;
+  description: string;
   roast: string;
   origin: string;
   process: string;
   brand: string;
   price: number;
 }
+
+export type CreateCoffee = Omit<Coffee, 'id'>;
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +30,7 @@ export class CoffeeService {
   }
 
   // Send coffee over
-  addCoffee(data: Coffee): Observable<any> {
-    return this.http.post(this.apiUrl, data);
+  addCoffee(data: CreateCoffee): Observable<CreateCoffee> {
+    return this.http.post<Coffee>(this.apiUrl, data);
   }
 }

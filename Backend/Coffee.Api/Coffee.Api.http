@@ -3,4 +3,7 @@
 GET {{Coffee.Api_HostAddress}}/api/coffees
 Accept: application/json
 
+POST {{Coffee.Api_HostAddress}}/api/coffees
+Accept: application/json
+
 ###

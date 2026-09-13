@@ -20,6 +20,15 @@ public class CoffeeController : ControllerBase
         return await _context.Coffees.ToListAsync();
     }
 
+    [HttpPost]
+    public async Task<ActionResult<IEnumerable<CoffeeModel>>> AddCoffee(CoffeeModel coffee)
+    {
+        _context.Coffees.Add(coffee);
+        await _context.SaveChangesAsync();
+
+        return Ok();
+    }
+
 /*    [HttpGet("{id}")]
     public async Task<ActionResult<CoffeeModel>> GetCoffees(int id)
     {

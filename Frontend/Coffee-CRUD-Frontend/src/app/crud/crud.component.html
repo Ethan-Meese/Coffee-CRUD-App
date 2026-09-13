@@ -1,9 +1,9 @@
 <div class="crud">
   <h3>CRUD Operations</h3>
-  <button>Create</button>
-  <button (click)="getCoffee()">Read</button>
-  <button>Update</button>
-  <button>Delete</button>
+  <button (click)="crudButtonCase('Create')">Create</button>
+  <button (click)="getCoffee()" (click)="crudButtonCase('Read')">Read</button>
+  <button (click)="crudButtonCase('Update')">Update</button>
+  <button (click)="crudButtonCase('Delete')">Delete</button>
 </div>
 
 <div>
@@ -12,4 +12,57 @@
     Here is where the crud operations will be dynamically called, if I select create, It will give
     the fields to do so ect.
   </p>
+  @switch (crudCase) {
+    @case ('Create') {
+      <form [formGroup]="coffeeForm" (ngSubmit)="addCoffeeFromSubmit()">
+        <div>
+          <label>Coffee Name</label>
+          <input type="text" formControlName="name" />
+        </div>
+
+        <div>
+          <label>Texture</label>
+          <input type="text" formControlName="texture" />
+        </div>
+
+        <div>
+          <label>Description</label>
+          <input type="text" formControlName="description" />
+        </div>
+
+        <div>
+          <label>Roast</label>
+          <input type="text" formControlName="roast" />
+        </div>
+
+        <div>
+          <label>Origin</label>
+          <input type="text" formControlName="origin" />
+        </div>
+
+        <div>
+          <label>Process</label>
+          <input type="text" formControlName="process" />
+        </div>
+
+        <div>
+          <label>Brand</label>
+          <input type="text" formControlName="brand" />
+        </div>
+
+        <div>
+          <label>Price</label>
+          <input type="number" formControlName="price" />
+        </div>
+        <button type="submit" [disabled]="coffeeForm.invalid">Submit Coffee to DataBase</button>
+      </form>
+    }
+    @case ('Update') {
+      <p>Test Update</p>
+    }
+    @case ('Delete') {
+      <p>Test Delete</p>
+    }
+    @case ('Read') {}
+  }
 </div>
