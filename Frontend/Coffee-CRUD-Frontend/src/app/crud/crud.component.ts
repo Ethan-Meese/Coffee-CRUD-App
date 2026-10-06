@@ -14,13 +14,26 @@ export class CrudComponent implements OnInit {
 
   @Output() coffeeLoaded = new EventEmitter<Coffee[]>();
   private postCoffee!: CreateCoffee;
+  private patchCoffee!: Coffee;
   public crudCase?: string;
 
   constructor() {}
 
   ngOnInit() {}
 
-  coffeeForm = this.fb.nonNullable.group({
+  coffeeFormPost = this.fb.nonNullable.group({
+    name: ['', Validators.required],
+    texture: ['', Validators.required],
+    description: ['', Validators.required],
+    roast: ['', Validators.required],
+    origin: ['', Validators.required],
+    process: ['', Validators.required],
+    brand: ['', Validators.required],
+    price: [0, Validators.required],
+  });
+
+  coffeeFormPatch = this.fb.nonNullable.group({
+    id: [0, Validators.required],
     name: ['', Validators.required],
     texture: ['', Validators.required],
     description: ['', Validators.required],
@@ -46,9 +59,23 @@ export class CrudComponent implements OnInit {
   }
 
   addCoffeeFromSubmit() {
-    if (this.coffeeForm.valid) {
-      this.postCoffee = this.coffeeForm.getRawValue();
+    if (this.coffeeFormPost.valid) {
+      this.postCoffee = this.coffeeFormPost.getRawValue();
       this.addCoffee(this.postCoffee);
+    }
+  }
+
+  updateCoffee(id: number, data:Coffee){
+    this.coffeeServie.updateCoffee(id, data).subscribe({
+      next: (response) => console.log('Success!', response),
+      error: (err) => console.log(err),
+    });
+  }
+
+  updateCoffeeFormSubmit(){
+    if (this.coffeeFormPatch.valid) {
+      this.patchCoffee = this.coffeeFormPatch.getRawValue();
+      this.updateCoffee(this.patchCoffee.id, this.patchCoffee);
     }
   }
 

@@ -33,4 +33,8 @@ export class CoffeeService {
   addCoffee(data: CreateCoffee): Observable<CreateCoffee> {
     return this.http.post<Coffee>(this.apiUrl, data);
   }
+
+  updateCoffee(id: number, data: Coffee): Observable<Coffee>{
+    return this.http.patch<Coffee>(`${this.apiUrl}?id=${id}`, data);
+  }
 }
