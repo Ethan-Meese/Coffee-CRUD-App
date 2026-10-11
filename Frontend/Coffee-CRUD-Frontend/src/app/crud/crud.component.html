@@ -58,8 +58,7 @@
       </form>
     }
     @case ('Update') {
-      <form [formGroup]="coffeeFormPatch" (ngSubmit)="addCoffeeFromSubmit()">
-
+      <form [formGroup]="coffeeFormPatch" (ngSubmit)="updateCoffeeFormSubmit()">
         <div>
           <label>ID</label>
           <input type="number" formControlName="id" />
@@ -104,12 +103,24 @@
           <label>Price</label>
           <input type="number" formControlName="price" />
         </div>
-        <button type="submit" [disabled]="coffeeFormPatch.invalid">Submit Coffee to DataBase</button>
+        <button type="submit" [disabled]="coffeeFormPatch.invalid">
+          Submit Coffee to DataBase
+        </button>
       </form>
     }
     @case ('Delete') {
-      <p>Test Delete</p>
+      <form [formGroup]="coffeeFormDelete" (ngSubmit)="deleteCoffeeFormSubmit()">
+        <div>
+          <label>ID</label>
+          <input type="number" formControlName="id" />
+        </div>
+        <button type="submit" [disabled]="coffeeFormDelete.invalid">
+          Delete Coffee From Database
+        </button>
+      </form>
     }
-    @case ('Read') {}
+    @case ('Read') {
+      <p>Coffee is Read!</p>
+    }
   }
 </div>

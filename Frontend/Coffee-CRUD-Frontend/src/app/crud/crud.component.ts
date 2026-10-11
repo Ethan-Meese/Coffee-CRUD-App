@@ -15,6 +15,7 @@ export class CrudComponent implements OnInit {
   @Output() coffeeLoaded = new EventEmitter<Coffee[]>();
   private postCoffee!: CreateCoffee;
   private patchCoffee!: Coffee;
+
   public crudCase?: string;
 
   constructor() {}
@@ -29,19 +30,23 @@ export class CrudComponent implements OnInit {
     origin: ['', Validators.required],
     process: ['', Validators.required],
     brand: ['', Validators.required],
-    price: [0, Validators.required],
+    price: [0, [Validators.required, Validators.min(1)]],
   });
 
   coffeeFormPatch = this.fb.nonNullable.group({
-    id: [0, Validators.required],
-    name: ['', Validators.required],
-    texture: ['', Validators.required],
-    description: ['', Validators.required],
-    roast: ['', Validators.required],
-    origin: ['', Validators.required],
-    process: ['', Validators.required],
-    brand: ['', Validators.required],
-    price: [0, Validators.required],
+    id: [0, [Validators.required, Validators.min(1)]],
+    name: [],
+    texture: [],
+    description: [],
+    roast: [],
+    origin: [],
+    process: [],
+    brand: [],
+    price: [0, [Validators.required, Validators.min(1)]],
+  });
+
+  coffeeFormDelete = this.fb.nonNullable.group({
+    id: [0, [Validators.required, Validators.min(1)]],
   });
 
   getCoffee(): void {
@@ -65,17 +70,31 @@ export class CrudComponent implements OnInit {
     }
   }
 
-  updateCoffee(id: number, data:Coffee){
+  updateCoffee(id: number, data: Coffee) {
     this.coffeeServie.updateCoffee(id, data).subscribe({
       next: (response) => console.log('Success!', response),
       error: (err) => console.log(err),
     });
   }
 
-  updateCoffeeFormSubmit(){
+  updateCoffeeFormSubmit() {
     if (this.coffeeFormPatch.valid) {
       this.patchCoffee = this.coffeeFormPatch.getRawValue();
       this.updateCoffee(this.patchCoffee.id, this.patchCoffee);
+    }
+  }
+
+  deleteCoffee(id: number) {
+    this.coffeeServie.deleteCoffee(id).subscribe({
+      next: (response) => console.log('Success!', response),
+      error: (err) => console.log(err),
+    });
+  }
+
+  deleteCoffeeFormSubmit() {
+    if (this.coffeeFormDelete.valid) {
+      const id = this.coffeeFormDelete.getRawValue().id;
+      this.deleteCoffee(id);
     }
   }
 
