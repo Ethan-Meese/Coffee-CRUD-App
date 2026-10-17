@@ -1,6 +1,11 @@
 .products {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.products h3{
+  color: var(--accent)
 }
 
 .scrollable-container {

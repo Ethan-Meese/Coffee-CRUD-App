@@ -1,4 +1,4 @@
 .header{
-background-color: brown;
-text-align: center;
+    text-align: center;
+    color: var(--accent);
 }

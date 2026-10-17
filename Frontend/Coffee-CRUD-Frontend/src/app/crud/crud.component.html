@@ -1,122 +1,127 @@
-<div class="crud">
-  <h3>CRUD Operations</h3>
-  <button (click)="crudButtonCase('Create')">Create</button>
-  <button (click)="getCoffee()" (click)="crudButtonCase('Read')">Read</button>
-  <button (click)="crudButtonCase('Update')">Update</button>
-  <button (click)="crudButtonCase('Delete')">Delete</button>
+<div class="crud-operations">
+  <h3>Operations</h3>
+  <div class="btn-container">
+    <button (click)="crudButtonCase('Create')">Create</button>
+    <button (click)="getCoffee()" (click)="crudButtonCase('Read')">Read</button>
+    <button (click)="crudButtonCase('Update')">Update</button>
+    <button (click)="crudButtonCase('Delete')">Delete</button>
+  </div>
 </div>
 
-<div>
+<div class="crud-operations">
   <h3>Controls</h3>
-  @switch (crudCase) {
-    @case ('Create') {
-      <form [formGroup]="coffeeFormPost" (ngSubmit)="addCoffeeFromSubmit()">
-        <div>
-          <label>Coffee Name</label>
-          <input type="text" formControlName="name" />
-        </div>
 
-        <div>
-          <label>Texture</label>
-          <input type="text" formControlName="texture" />
-        </div>
+  <div class="crud-input-container">
+    @switch (crudCase) {
+      @case ('Create') {
+        <form [formGroup]="coffeeFormPost" (ngSubmit)="addCoffeeFromSubmit()">
+          <div>
+            <label>Coffee Name </label>
+            <input type="text" formControlName="name" />
+          </div>
 
-        <div>
-          <label>Description</label>
-          <input type="text" formControlName="description" />
-        </div>
+          <div>
+            <label>Texture </label>
+            <input type="text" formControlName="texture" />
+          </div>
 
-        <div>
-          <label>Roast</label>
-          <input type="text" formControlName="roast" />
-        </div>
+          <div>
+            <label>Description </label>
+            <input type="text" formControlName="description" />
+          </div>
 
-        <div>
-          <label>Origin</label>
-          <input type="text" formControlName="origin" />
-        </div>
+          <div>
+            <label>Roast </label>
+            <input type="text" formControlName="roast" />
+          </div>
 
-        <div>
-          <label>Process</label>
-          <input type="text" formControlName="process" />
-        </div>
+          <div>
+            <label>Origin </label>
+            <input type="text" formControlName="origin" />
+          </div>
 
-        <div>
-          <label>Brand</label>
-          <input type="text" formControlName="brand" />
-        </div>
+          <div>
+            <label>Process </label>
+            <input type="text" formControlName="process" />
+          </div>
 
-        <div>
-          <label>Price</label>
-          <input type="number" formControlName="price" />
-        </div>
-        <button type="submit" [disabled]="coffeeFormPost.invalid">Submit Coffee to DataBase</button>
-      </form>
+          <div>
+            <label>Brand </label>
+            <input type="text" formControlName="brand" />
+          </div>
+
+          <div>
+            <label>Price </label>
+            <input type="number" formControlName="price" />
+          </div>
+          <button type="submit" [disabled]="coffeeFormPost.invalid">Submit Coffee to DataBase</button>
+        </form>
+      }
+      @case ('Update') {
+        <form [formGroup]="coffeeFormPatch" (ngSubmit)="updateCoffeeFormSubmit()">
+          <div>
+            <label>ID </label>
+            <input type="number" formControlName="id" />
+          </div>
+
+          <div>
+            <label>Coffee Name </label>
+            <input type="text" formControlName="name" />
+          </div>
+
+          <div>
+            <label>Texture </label>
+            <input type="text" formControlName="texture" />
+          </div>
+
+          <div>
+            <label>Description </label>
+            <input type="text" formControlName="description" />
+          </div>
+
+          <div>
+            <label>Roast </label>
+            <input type="text" formControlName="roast" />
+          </div>
+
+          <div>
+            <label>Origin </label>
+            <input type="text" formControlName="origin" />
+          </div>
+
+          <div>
+            <label>Process </label>
+            <input type="text" formControlName="process" />
+          </div>
+
+          <div>
+            <label>Brand </label>
+            <input type="text" formControlName="brand" />
+          </div>
+
+          <div>
+            <label>Price </label>
+            <input type="number" formControlName="price" />
+          </div>
+          <button type="submit" [disabled]="coffeeFormPatch.invalid">
+            Submit Coffee to DataBase
+          </button>
+        </form>
+      }
+      @case ('Delete') {
+        <form [formGroup]="coffeeFormDelete" (ngSubmit)="deleteCoffeeFormSubmit()">
+          <div>
+            <label>ID </label>
+            <input type="number" formControlName="id" />
+          </div>
+          <button type="submit" [disabled]="coffeeFormDelete.invalid">
+            Delete Coffee From Database
+          </button>
+        </form>
+      }
+      @case ('Read') {
+        <p>Coffee is Read!</p>
+      }
     }
-    @case ('Update') {
-      <form [formGroup]="coffeeFormPatch" (ngSubmit)="updateCoffeeFormSubmit()">
-        <div>
-          <label>ID</label>
-          <input type="number" formControlName="id" />
-        </div>
-
-        <div>
-          <label>Coffee Name</label>
-          <input type="text" formControlName="name" />
-        </div>
-
-        <div>
-          <label>Texture</label>
-          <input type="text" formControlName="texture" />
-        </div>
-
-        <div>
-          <label>Description</label>
-          <input type="text" formControlName="description" />
-        </div>
-
-        <div>
-          <label>Roast</label>
-          <input type="text" formControlName="roast" />
-        </div>
-
-        <div>
-          <label>Origin</label>
-          <input type="text" formControlName="origin" />
-        </div>
-
-        <div>
-          <label>Process</label>
-          <input type="text" formControlName="process" />
-        </div>
-
-        <div>
-          <label>Brand</label>
-          <input type="text" formControlName="brand" />
-        </div>
-
-        <div>
-          <label>Price</label>
-          <input type="number" formControlName="price" />
-        </div>
-        <button type="submit" [disabled]="coffeeFormPatch.invalid">
-          Submit Coffee to DataBase
-        </button>
-      </form>
-    }
-    @case ('Delete') {
-      <form [formGroup]="coffeeFormDelete" (ngSubmit)="deleteCoffeeFormSubmit()">
-        <div>
-          <label>ID</label>
-          <input type="number" formControlName="id" />
-        </div>
-        <button type="submit" [disabled]="coffeeFormDelete.invalid">
-          Delete Coffee From Database
-        </button>
-      </form>
-    }
-    @case ('Read') {
-      <p>Coffee is Read!</p>
-    }
-  }
+  </div>
 </div>

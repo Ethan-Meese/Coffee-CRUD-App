@@ -1,5 +1,66 @@
-.crud{
+.crud-operations{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-left: 2rem;
+    color: var(--accent)
+}
+
+
+.btn-container{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: .5rem;
+}
+
+.btn-container button{
+    border: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    background-color: var(--secondary-brown);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-container button:hover{
+    background-color: var(--accent);
+}
+
+
+.crud-input-container{
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: 1fr;
+    align-items: center;
+    padding-left: 2rem;
+    color: var(--accent);
+}
+.crud-input-container button{
+    border: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    background-color: var(--secondary-brown);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.crud-input-container input{
+    border: none;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    background-color: var(--secondary-brown);
+}
+
+.crud-input-container form {
+  display: grid;
+  gap: 1rem;
+}
+
+.crud-input-container button:hover{
+    background-color: var(--accent);
 }
