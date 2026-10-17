@@ -1,4 +1,32 @@
-.products{
-    display: flex;
-    flex-direction: column;
+.products {
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollable-container {
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.scrollable-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4);
 }

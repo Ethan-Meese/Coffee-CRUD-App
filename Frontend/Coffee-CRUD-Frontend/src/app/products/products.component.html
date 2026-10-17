@@ -1,9 +1,11 @@
 <div class="products">
-  <p>Here is a list of our coffees!</p>
-  @for (coffeeItem of coffees; track coffeeItem.id) {
-    <p>
-      {{ coffeeItem.id }} - {{ coffeeItem.name }} -
-      {{ coffeeItem.price }}
-    </p>
-  }
+  <h3>Here is a list of our coffees!</h3>
+  <div class="scrollable-container">
+    @for (coffeeItem of coffees; track coffeeItem.id) {
+      <p>
+        {{ coffeeItem.id }} - {{ coffeeItem.name }} -
+        {{ coffeeItem.price }}
+      </p>
+    }
+  </div>
 </div>
